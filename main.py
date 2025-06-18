@@ -8,5 +8,13 @@ nova_lista = ler_lista_arquivo('nova.txt')
 novas_oracoes = nova_lista - base
 oracoes_que_sumiram = base - nova_lista
 
-print("Novas orações encontradas:", novas_oracoes)
-print("Orações que sumiram:", oracoes_que_sumiram)
+with open('diferencas.txt', 'w', encoding='utf-8') as f:
+    f.write('Novas orações encontradas:\n')
+    for oracao in sorted(novas_oracoes):
+        f.write(f'- {oracao}\n')
+
+    f.write('\nOrações que sumiram:\n')
+    for oracao in sorted(oracoes_que_sumiram):
+        f.write(f'- {oracao}\n')
+
+print('Diferenças salvas em diferencas.txt')
